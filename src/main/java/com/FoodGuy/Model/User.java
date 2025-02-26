@@ -3,6 +3,7 @@ package com.FoodGuy.Model;
 
 import com.FoodGuy.Dto.RestaurantDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public class User {
 
       private String email;
 
+      @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
       private String password;
 
       @Enumerated(EnumType.STRING)
