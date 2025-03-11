@@ -46,7 +46,9 @@ public class RestaurantServiceImpl extends BaseLogger implements RestaurantServi
         );
 
         Restaurant savedRestaurant = restaurantRepository.save(restaurant);
+
         logger.info("Restaurant created with ID: " + savedRestaurant.getId());
+        logger.warn("Restaurant name {}",savedRestaurant.getName());
         return savedRestaurant;
     }
 
@@ -69,7 +71,7 @@ public class RestaurantServiceImpl extends BaseLogger implements RestaurantServi
         }
 
         Restaurant updatedRestaurant = restaurantRepository.save(restaurant);
-        logger.info("Restaurant updated with ID: " + updatedRestaurant.getId());
+        logger.info("Restaurant updated with ID: and name " + updatedRestaurant.getId());
         return updatedRestaurant;
     }
 

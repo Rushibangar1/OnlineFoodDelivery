@@ -42,8 +42,16 @@ public class AdminRestaurantController {
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody CreateRestaurantRequest request,
                                                        @RequestHeader("Authorization") String jwt) throws Exception {
         logger.info("Creating restaurant: {}", request.getName());
+       logger.info("{} {} {} ",request.getDescription(),request.getCuisineType(),request.getContactInformation());
         User user = userService.findUserByJwtToken(jwt);
+        logger.info("user id {} , {}",user.getId(),user.getFullName());
+
         Restaurant restaurant = restaurantService.createRestaurant(request, user);
+
+
+        logger.info("Returning restaurant: {}", restaurant);
+        System.out.println("Returning restaurant: " + restaurant);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurant);
     }
 

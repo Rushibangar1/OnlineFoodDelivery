@@ -47,7 +47,7 @@ public class RestaurantController extends BaseLogger {
             @RequestHeader("Authorization") String jwt
     ) throws Exception{
         logger.info("fetching all the restaurants");
-        List<Restaurant>  restaurantList = restaurantService.getAllRestaurant();
+        List<Restaurant> restaurantList = restaurantService.getAllRestaurant();
         return ResponseEntity.ok(restaurantList);
     }
 

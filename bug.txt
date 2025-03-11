@@ -1,0 +1,19 @@
+🛠 Issue: Restaurant Object Returning `null` Values
+
+Timestamp: 2025-03-11T13:17:53.421+05:30
+Error Observed:
+Returning restaurant: Restaurant(id=102, owner=null, name=null, description=null,
+cuisineType=null, address=null, contactInformation=null, openingHours=null,
+orderList=[], images=null, registrationDate=null, open=false, foods=[])
+
+📌 Cause of the Issue:
+1. Constructor Issue in `Restaurant` Entity:
+   - The constructor did not assign values to fields, leading to `null` values.
+
+2. Missing `@Transactional` in Service Method:
+   - Address was saved separately but not properly linked with Restaurant.
+
+✅ Solution:
+- Update `Restaurant` constructor to correctly assign fields.
+- Use `@Transactional` annotation in service method.
+- Ensure the request body contains all required fields before saving.
