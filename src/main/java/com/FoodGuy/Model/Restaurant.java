@@ -58,12 +58,6 @@ public class Restaurant {
     private List<Food> foods = new ArrayList<>();
 
 
-
-
-
-
-
-
-
-
+    public Restaurant(Address address, ContactInformation contactInformation, String cuisineType, String description, List<String> images, String name, String openingHours, LocalDateTime now, User user) {
+    }
 }

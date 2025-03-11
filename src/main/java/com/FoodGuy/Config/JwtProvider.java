@@ -17,15 +17,15 @@ public class JwtProvider {
     private final SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
     public String generateToken(Authentication auth) {
-        List<String> roles = auth.getAuthorities().stream()
+      String roles = auth.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+                .collect(Collectors.joining(","));
 
         return Jwts.builder()
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 86400000))
                 .claim("email", auth.getName())
-                .claim("authorities", roles)  // Store as List<String>
+                .claim("authorities", String.join(",", roles))  // Store as List<String>
                 .signWith(key)
                 .compact();
     }

@@ -7,7 +7,7 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
+
 @Embeddable
 public class RestaurantDto {
     private String title;
@@ -15,4 +15,47 @@ public class RestaurantDto {
     private List<String> images;
     private String description;
     private long   id;
+
+    public RestaurantDto(String title, List<String> images, String description, long id) {
+        this.title = title;
+        this.images = images;
+        this.description = description;
+        this.id = id;
+    }
+
+    public RestaurantDto() {
+
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

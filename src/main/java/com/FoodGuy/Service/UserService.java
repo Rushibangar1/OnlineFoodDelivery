@@ -1,4 +1,4 @@
-package com.FoodGuy.UserService;
+package com.FoodGuy.Service;
 
 import com.FoodGuy.Model.User;
 

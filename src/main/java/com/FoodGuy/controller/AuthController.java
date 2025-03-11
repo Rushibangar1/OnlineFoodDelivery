@@ -7,7 +7,7 @@ import com.FoodGuy.Model.User;
 import com.FoodGuy.Repository.CartRepository;
 import com.FoodGuy.Repository.UserRepository;
 import com.FoodGuy.Request.LoginRequest;
-import com.FoodGuy.UserService.CustomUserService;
+import com.FoodGuy.Service.CustomUserService;
 import com.FoodGuy.response.AuthResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
 package com.FoodGuy.controller;
 
 import com.FoodGuy.Model.User;
-import com.FoodGuy.UserService.UserService;
+import com.FoodGuy.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

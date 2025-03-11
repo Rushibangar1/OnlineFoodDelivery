@@ -2,6 +2,8 @@ package com.FoodGuy.Config;
 
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,25 +24,26 @@ import java.util.Collections;
 @EnableWebSecurity
 public class AppConfig {
 
-
+    private static final Logger logger = LoggerFactory.getLogger(JwtTokenValidator.class);
 
   @Bean
   DefaultSecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-     return 
+     return
              http.sessionManagement(management-> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
               .authorizeHttpRequests(Authorize -> Authorize
                       .requestMatchers("/test").permitAll()
-                      .requestMatchers("/api/admin/**").hasAnyRole("Role_Restaurant_Owner","ADMIN")
+                      .requestMatchers("/api/admin/**").hasAnyAuthority("Role_Restaurant_Owner","ADMIN")
                       .requestMatchers("/api/**").authenticated()
                       .anyRequest().permitAll()
               ).addFilterBefore(new JwtTokenValidator(),BasicAuthenticationFilter.class)
               .csrf(AbstractHttpConfigurer::disable)
               .cors(cors->cors.configurationSource(CorsConfigurationSource())).build();
-      
-     
+
+
   }
 
     private CorsConfigurationSource CorsConfigurationSource() {
+        System.out.println("Security filter is being configured...");  // DEBUG
       return new CorsConfigurationSource() {
           @Override
           public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
