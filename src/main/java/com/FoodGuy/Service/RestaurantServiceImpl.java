@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -131,14 +132,23 @@ public class RestaurantServiceImpl extends BaseLogger implements RestaurantServi
         restaurantDto.setTitle(restaurant.getName());
         restaurantDto.setId(restaurant.getId());
 
-        if (user.getFavourites().contains(restaurantDto)) {
-            user.getFavourites().remove(restaurantDto);
-            logger.info("Restaurant removed from user ID: " + user.getId() + "'s favorites.");
-        } else {
-            user.getFavourites().add(restaurantDto);
-            logger.info("Restaurant added to user ID: " + user.getId() + "'s favorites.");
+        boolean isFavorite = false;
+        List<RestaurantDto> fav = user.getFavourites();
+
+        for (RestaurantDto favorite : fav) {
+            if (Objects.equals(favorite.getId(), restaurantId)) {
+                isFavorite = true;
+                break;
+            }
         }
 
+        if (isFavorite) {
+            fav.removeIf(favorite -> Objects.equals(favorite.getId(), restaurantId));
+            logger.info("Removed from favorites");
+        } else {
+            fav.add(restaurantDto);
+            logger.info("Added to favorites");
+        }
         userRepository.save(user);
         return restaurantDto;
     }

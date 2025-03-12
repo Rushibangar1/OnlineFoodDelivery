@@ -6,6 +6,7 @@ import jakarta.persistence.Embeddable;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Embeddable
@@ -22,6 +23,20 @@ public class RestaurantDto {
         this.description = description;
         this.id = id;
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true; // Same object reference
+//        if (o == null || getClass() != o.getClass()) return false; // Check class type
+//        RestaurantDto that = (RestaurantDto) o;
+//        return Objects.equals(title, that.title); // Compare by title
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(title);
+//    }
+
 
     public RestaurantDto() {
 

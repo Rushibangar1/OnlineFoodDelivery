@@ -71,7 +71,7 @@ public class AdminRestaurantController {
     public ResponseEntity<MessageResponse> deleteRestaurant(@PathVariable Long id) throws Exception {
         logger.info("Deleting restaurant with ID: {}", id);
         restaurantService.deleteRestaurant(id);
-        return ResponseEntity.ok(new MessageResponse("Restaurant deleted successfully"));
+        return ResponseEntity.ok(new MessageResponse());
     }
 
     // Update restaurant status (no authentication required)

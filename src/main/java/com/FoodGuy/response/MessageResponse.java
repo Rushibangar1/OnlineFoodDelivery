@@ -6,6 +6,7 @@ import lombok.Data;
 public class MessageResponse {
 private String message;
 
-    public MessageResponse(String restaurantDeletedSuccessfully) {
+
+    public MessageResponse() {
     }
 }
